@@ -81,12 +81,7 @@ class TaskController extends Controller
             // Check if the tasks collection is empty
             if ($tasks->isEmpty()) {
                 return response()->json([
-                    'message' => 'No tasks found for the given query.',
-                    'data' => [],
-                    'total' => 0,
-                    'per_page' => $tasks->perPage(),
-                    'current_page' => $tasks->currentPage(),
-                    'last_page' => $tasks->lastPage(),
+                    'message' => 'No tasks found for the given query.'
                 ], 404);
             }
         } catch (QueryException $e) {
