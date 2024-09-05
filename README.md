@@ -13,7 +13,7 @@ This is a Task Management API built with Laravel Lumen. It allows you to create,
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/MatibeJeremy/task-management-api.git
+    git clone git@github.com:MatibeJeremy/task_management.git
     cd task-management-api
     ```
 
