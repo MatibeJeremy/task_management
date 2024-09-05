@@ -41,7 +41,7 @@ This is a Task Management API built with Laravel Lumen. It allows you to create,
 4. **Generate the application key:**
 
     ```sh
-    php artisan key:generate
+     php -r "echo base64_encode(random_bytes(32));" 
     ```
 
 5. **Run the database migrations:**
