@@ -62,6 +62,14 @@ This is a Task Management API built with Laravel Lumen. It allows you to create,
 
    Open your browser and go to `http://localhost:8000`.
 
+## Running Tests After data is added to the table
+
+1. **Run the tests:**
+
+    ```sh
+    ./vendor/bin/phpunit
+    ```
+
 ## API Endpoints
 
 - **GET /tasks**: Get all tasks

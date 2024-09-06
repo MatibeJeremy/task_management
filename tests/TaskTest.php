@@ -1,6 +1,6 @@
 <?php
 
-class TaskTestCases extends \Tests\TestCase
+class TaskTest extends \Tests\TestCase
 {
     public function testFetchAllTasks()
     {
@@ -10,7 +10,7 @@ class TaskTestCases extends \Tests\TestCase
 
     public function testFetchTask()
     {
-        $response = $this->get('/tasks/4');
+        $response = $this->get('/tasks/1');
         $response->assertResponseStatus(200);
     }
 
@@ -22,34 +22,36 @@ class TaskTestCases extends \Tests\TestCase
 
     public function testCreateTask()
     {
-        $response = $this->post('/tasks', [
-            'title' => 'Test Task',
+        $response = $this->call('POST', '/tasks', [], [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
+            'title' => 'Test task 2',
             'description' => 'This is a test task',
             'status' => 'PENDING',
             'due_date' => '2024-12-31'
-        ],['Content-Type' => 'application/json']);
-        $response->assertResponseStatus(201);
+        ]));
+
+        // Check the response status
+        $this->assertEquals(201, $response->status());
     }
 
     public function testUpdateTask()
     {
-        $response = $this->put('/tasks/1', [
+        $response = $this->put('/tasks/1', [], [], [], ['CONTENT_TYPE' => 'application/json'], json_encode([
             'title' => 'Test Task Updated',
             'description' => 'This is a test task updated',
             'status' => 'COMPLETED',
             'due_date' => '2021-12-31'
-        ]);
+        ]));
         $response->assertResponseStatus(200);
     }
 
     public function testUpdateTaskFailure()
     {
-        $response = $this->put('/tasks/100', [
+        $response = $this->put('/tasks/100', [], [], [],['CONTENT_TYPE' => 'application/json'], json_encode([
             'title' => 'Test Task Updated',
             'description' => 'This is a test task updated',
             'status' => 'COMPLETED',
             'due_date' => '2021-12-31'
-        ]);
+        ]));
         $response->assertResponseStatus(404);
     }
 
